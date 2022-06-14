@@ -30,38 +30,30 @@ namespace emailSA
     {
         static SmtpClient smtp = new SmtpClient();
 
-        static private string _nombreEmisor;
-        static public string NombreEmisor { get; set; }
+        static public string nombreEmisor;
 
-        static private string _emailEmisor;
-        static public string EmailEmisor { get; set; }
+        static public string emailEmisor;
 
-        static private string _contra;
-        static public string Contra { get; set; }
-
-        static string _emailReceptor;
-        static string NombreReceptor { get; set; }
-        static public string EmailReceptor { get; set; }
-        static string _nombreReceptor;
-
+        static public string contra;
+        static public string emailReceptor;
+        static public string asunto, cuerpo;
 
 
 
         public static void ingresar()
         {
             smtp.Connect("smtp-mail.outlook.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate(EmailEmisor, Contra);
+            smtp.Authenticate(emailEmisor, contra);
         }
         public static void enviar()
         {
 
-
             MimeMessage email = new MimeMessage();
-            email.From.Add(new MailboxAddress(NombreEmisor, EmailEmisor));
-            email.To.Add(new MailboxAddress(NombreReceptor, EmailReceptor));
-            email.Subject = "Prueba";
+            email.From.Add(new MailboxAddress(nombreEmisor, emailEmisor));
+            email.To.Add(new MailboxAddress("email", emailReceptor));
+            email.Subject = asunto;
             BodyBuilder builder = new BodyBuilder();
-            builder.TextBody = @"A";
+            builder.TextBody = @cuerpo;
 
 
             email.Body = builder.ToMessageBody();
