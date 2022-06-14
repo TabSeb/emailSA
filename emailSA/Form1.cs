@@ -35,22 +35,7 @@ namespace emailSA
             catch (Exception)
             {
                 error.Show();
-                //MessageBox.Show("Correo ingresado no valido" + auth.StackTrace);
-
             }
-
-
-
-            // hacer la autenticacion gei con tu try catch
-            //este se hace si la autenticacion fue valida
-            //panel1.Show();
-            //error.Hide();
-
-
-
-            //si no es valido entonces muestra esto
-            //error.Show();
-
         }
 
         private void cerrarBoton_Click(object sender, EventArgs e)
@@ -61,16 +46,18 @@ namespace emailSA
 
         private void Enviar_Click(object sender, EventArgs e)
         {
-            usuario.emailReceptor = ingresarCorreoRecep.Text;
+            try
+            {
+                usuario.emailReceptor = ingresarCorreoRecep.Text;
+
+            }
+            catch (Exception)
+            {
+                //mensaje de que mando el email mal
+            }
             usuario.asunto = ingresarAsunto.Text;
             usuario.cuerpo = ingresarCuerpoText.Text;
-            
-
-
             usuario.enviar();
-
-
-            //insert an action o method , which to send the message TANTO TE GUSTA EL INGLES GEI
         }
     }
 }
