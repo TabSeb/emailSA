@@ -25,10 +25,10 @@ namespace emailSA
         private void ingresar_Click(object sender, EventArgs e)
         {
             
-            usuario.contra = IngresarContraseña.Text;
-            usuario.emailEmisor = IngresarCorreo.Text;
             try
             {
+                usuario.emailEmisor = IngresarCorreo.Text;
+                usuario.contra = IngresarContraseña.Text;
                 usuario.ingresar();
 
                 panel1.Show();
@@ -50,6 +50,9 @@ namespace emailSA
             try
             {
                 usuario.emailReceptor = ingresarCorreoRecep.Text;
+                usuario.asunto = ingresarAsunto.Text;
+                usuario.cuerpo = ingresarCuerpoText.Text;
+                usuario.enviar();
                 exitoMensaje.Show();
 
             }
@@ -57,9 +60,7 @@ namespace emailSA
             {
                 errorCorreo.Show();
             }
-            usuario.asunto = ingresarAsunto.Text;
-            usuario.cuerpo = ingresarCuerpoText.Text;
-            usuario.enviar();
+            
         }
     }
 }
