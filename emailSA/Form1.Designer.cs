@@ -35,6 +35,7 @@ namespace emailSA
             System.Windows.Forms.Button Ingresar;
             System.Windows.Forms.Button Enviar;
             this.Pantalla1 = new System.Windows.Forms.Panel();
+            this.error = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Enviar0 = new System.Windows.Forms.Label();
             this.cuerpoTexto = new System.Windows.Forms.Label();
@@ -56,7 +57,8 @@ namespace emailSA
             this.Titulo = new System.Windows.Forms.Label();
             this.ColorC = new System.Windows.Forms.PictureBox();
             this.ColorB = new System.Windows.Forms.PictureBox();
-            this.error = new System.Windows.Forms.Label();
+            this.exitoMensaje = new System.Windows.Forms.Label();
+            this.errorCorreo = new System.Windows.Forms.Label();
             CerrarBoton = new System.Windows.Forms.Button();
             ContenidoApp = new System.Windows.Forms.Label();
             Ingresar = new System.Windows.Forms.Button();
@@ -151,8 +153,21 @@ namespace emailSA
             this.Pantalla1.Size = new System.Drawing.Size(1189, 633);
             this.Pantalla1.TabIndex = 0;
             // 
+            // error
+            // 
+            this.error.AutoSize = true;
+            this.error.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.error.ForeColor = System.Drawing.Color.Red;
+            this.error.Location = new System.Drawing.Point(24, 408);
+            this.error.Name = "error";
+            this.error.Size = new System.Drawing.Size(312, 15);
+            this.error.TabIndex = 12;
+            this.error.Text = "CORREO O CONTRASEÑA NO VALIDOS, VUELVA A INTENTAR*\r\n";
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.errorCorreo);
+            this.panel1.Controls.Add(this.exitoMensaje);
             this.panel1.Controls.Add(this.Enviar0);
             this.panel1.Controls.Add(Enviar);
             this.panel1.Controls.Add(this.cuerpoTexto);
@@ -206,7 +221,7 @@ namespace emailSA
             // 
             // ingresarAsunto
             // 
-            this.ingresarAsunto.Location = new System.Drawing.Point(431, 53);
+            this.ingresarAsunto.Location = new System.Drawing.Point(440, 54);
             this.ingresarAsunto.Name = "ingresarAsunto";
             this.ingresarAsunto.Size = new System.Drawing.Size(716, 20);
             this.ingresarAsunto.TabIndex = 20;
@@ -248,7 +263,6 @@ namespace emailSA
             // 
             // redactar
             // 
-            this.redactar.AutoSize = true;
             this.redactar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.redactar.Font = new System.Drawing.Font("Agency FB", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.redactar.Location = new System.Drawing.Point(31, 29);
@@ -363,16 +377,27 @@ namespace emailSA
             this.ColorB.TabIndex = 0;
             this.ColorB.TabStop = false;
             // 
-            // error
+            // exitoMensaje
             // 
-            this.error.AutoSize = true;
-            this.error.Font = new System.Drawing.Font("Calibri Light", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.error.ForeColor = System.Drawing.Color.Red;
-            this.error.Location = new System.Drawing.Point(24, 408);
-            this.error.Name = "error";
-            this.error.Size = new System.Drawing.Size(312, 15);
-            this.error.TabIndex = 12;
-            this.error.Text = "CORREO O CONTRASEÑA NO VALIDOS, VUELVA A INTENTAR*\r\n";
+            this.exitoMensaje.AutoSize = true;
+            this.exitoMensaje.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitoMensaje.ForeColor = System.Drawing.Color.Lime;
+            this.exitoMensaje.Location = new System.Drawing.Point(50, 437);
+            this.exitoMensaje.Name = "exitoMensaje";
+            this.exitoMensaje.Size = new System.Drawing.Size(176, 14);
+            this.exitoMensaje.TabIndex = 26;
+            this.exitoMensaje.Text = "CORREO ENVIADO CON EXITO*";
+            // 
+            // errorCorreo
+            // 
+            this.errorCorreo.AutoSize = true;
+            this.errorCorreo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorCorreo.ForeColor = System.Drawing.Color.Red;
+            this.errorCorreo.Location = new System.Drawing.Point(53, 437);
+            this.errorCorreo.Name = "errorCorreo";
+            this.errorCorreo.Size = new System.Drawing.Size(113, 14);
+            this.errorCorreo.TabIndex = 27;
+            this.errorCorreo.Text = "CORREO INVALIDO*";
             // 
             // ASEmail
             // 
@@ -421,6 +446,8 @@ namespace emailSA
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label error;
+        private System.Windows.Forms.Label exitoMensaje;
+        private System.Windows.Forms.Label errorCorreo;
     }
 
 }

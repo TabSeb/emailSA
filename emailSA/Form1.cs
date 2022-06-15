@@ -17,6 +17,8 @@ namespace emailSA
             InitializeComponent();
             panel1.Hide();
             error.Hide();
+            exitoMensaje.Hide();
+            errorCorreo.Hide();
         }
 
 
@@ -40,7 +42,6 @@ namespace emailSA
 
         private void cerrarBoton_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
         }
 
@@ -49,11 +50,12 @@ namespace emailSA
             try
             {
                 usuario.emailReceptor = ingresarCorreoRecep.Text;
+                exitoMensaje.Show();
 
             }
             catch (Exception)
             {
-                //mensaje de que mando el email mal
+                errorCorreo.Show();
             }
             usuario.asunto = ingresarAsunto.Text;
             usuario.cuerpo = ingresarCuerpoText.Text;
