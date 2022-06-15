@@ -29,6 +29,7 @@ namespace emailSA
     static class usuario
     {
         static SmtpClient smtp = new SmtpClient();
+        
 
         static public string nombreEmisor;
 
@@ -38,12 +39,23 @@ namespace emailSA
         static public string emailReceptor;
         static public string asunto, cuerpo;
 
+        static public bool fueIngresado = false;
 
 
         public static void ingresar()
         {
-            smtp.Connect("smtp-mail.outlook.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate(emailEmisor, contra);
+            if(fueIngresado == true)
+            {
+                smtp.Authenticate(emailEmisor, contra);
+
+            }
+            else
+            {
+                fueIngresado = true;
+                smtp.Connect("smtp-mail.outlook.com", 587, SecureSocketOptions.StartTls);
+                smtp.Authenticate(emailEmisor, contra);
+            }
+
         }
         public static void enviar()
         {
