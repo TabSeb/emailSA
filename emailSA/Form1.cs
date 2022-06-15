@@ -54,6 +54,7 @@ namespace emailSA
                 usuario.cuerpo = ingresarCuerpoText.Text;
                 usuario.enviar();
                 exitoMensaje.Show();
+                errorCorreo.Hide();
 
             }
             catch (Exception)
