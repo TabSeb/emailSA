@@ -51,6 +51,7 @@ namespace emailSA
             {
                 usuario.emailReceptor = ingresarCorreoRecep.Text;
                 exitoMensaje.Show();
+                errorCorreo.Hide();
 
             }
             catch (Exception)
