@@ -66,11 +66,11 @@ namespace emailSA
 
             foreach (string c in DatoSocios)
             {
-                cuerpo = cuerpo + c;
+                cuerpo = cuerpo + c + Environment.NewLine;
             }
-
+            //sino probar tostring en datosocios
             BodyBuilder builder = new BodyBuilder();
-            builder.TextBody = @DatoSocios;
+            builder.TextBody = builder.ToString();
 
             email.Body = builder.ToMessageBody();
 
