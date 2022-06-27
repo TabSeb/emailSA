@@ -33,7 +33,6 @@ namespace emailSA
         static SmtpClient smtp = new SmtpClient();
         static public string emailDestino;
 
-        static public string asunto = "entradas vendidas";
         static public string cuerpo;
         static public string nombreEmisor;
 
@@ -62,16 +61,16 @@ namespace emailSA
         public static void enviar()//TODO incrementar compras exitosas
         {
             MimeMessage email = new MimeMessage();
-            email.To.Add(new MailboxAddress("destino", emailReceptor));
-            email.Subject = asunto;
-            
-            BodyBuilder builder = new BodyBuilder();
-            builder.TextBody = @cuerpo;
+            email.To.Add(new MailboxAddress("destino", sistema.emailDestino));
+            email.Subject = "entradas vendidas";
 
             foreach (string c in DatoSocios)
             {
-                cuerpo = c;
+                cuerpo = cuerpo + c;
             }
+
+            BodyBuilder builder = new BodyBuilder();
+            builder.TextBody = @DatoSocios;
 
             email.Body = builder.ToMessageBody();
 

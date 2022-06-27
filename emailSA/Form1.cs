@@ -82,22 +82,7 @@ namespace emailSA
             pantalla2.Hide();
         }
         private void enviarCorreo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                sistema.emailDestino = insertarCorreoParaSistema.Text;
-
-                sistema.enviar();
-                conExito.Show();
-            }
-            catch (Exception)
-            {
-                //TODO: en el caso que salga mal
-                throw;
-            }
-            //INSERTA TU METODO FEO 
-            //si sale bien mostra esto
-            
+        {   
         }
 
         private void finalizarCorreo_Click(object sender, EventArgs e)
@@ -118,6 +103,24 @@ namespace emailSA
         private void pantalla3_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void enviarCorreo_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                sistema.emailDestino = insertarCorreoReceptor.Text;
+
+                sistema.enviar();
+                conExito.Show();
+            }
+            catch (Exception)
+            {
+                //TODO: en el caso que salga mal
+                
+            }
+            //INSERTA TU METODO FEO 
+            //si sale bien mostra esto
         }
     }
 }

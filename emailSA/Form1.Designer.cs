@@ -151,8 +151,9 @@ namespace emailSA
             this.enviarCorreo.Size = new System.Drawing.Size(211, 39);
             this.enviarCorreo.TabIndex = 5;
             this.enviarCorreo.Text = "ENVIAR CORREO";
-            this.enviarCorreo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.enviarCorreo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.enviarCorreo.UseVisualStyleBackColor = true;
+            this.enviarCorreo.Click += new System.EventHandler(this.enviarCorreo_Click_1);
             // 
             // ayuda
             // 
