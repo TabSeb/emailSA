@@ -39,7 +39,6 @@ namespace emailSA
         static public string emailEmisor;
 
         static public string contra;
-        static public string emailReceptor;
         static public bool fueIngresado = false;
         static public ArrayList DatoSocios = new ArrayList();
 
