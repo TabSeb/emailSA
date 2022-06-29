@@ -26,14 +26,13 @@ namespace emailSA
             Application.Run(new ASEmail());
         }
 
-    }
-    //me quede en pensar como hacer lo del metodo enviar, si ponerlo como estaba o ponerlo en sistema(si lo pongo en sistema tengo que agregar nombre emisor, email emisor todo eso)
+    } 
     static class sistema 
     {
         static SmtpClient smtp = new SmtpClient();
         static public string emailDestino;
+        public static string cuerpo;
 
-        static public string cuerpo;
         static public string nombreEmisor;
 
         static public string emailEmisor;
@@ -59,20 +58,22 @@ namespace emailSA
         }
         public static void enviar()//TODO incrementar compras exitosas
         {
+
+            
             MimeMessage email = new MimeMessage();
+            email.From.Add(new MailboxAddress(socio.nombre, sistema.emailEmisor));
             email.To.Add(new MailboxAddress("destino", sistema.emailDestino));
             email.Subject = "entradas vendidas";
 
             foreach (string c in DatoSocios)
             {
-                cuerpo = cuerpo + c + Environment.NewLine;
+                cuerpo = $"{cuerpo}<p> {c} <br>";
             }
-            //sino probar tostring en datosocios
+            
             BodyBuilder builder = new BodyBuilder();
-            builder.TextBody = builder.ToString();
+            builder.HtmlBody = string.Format(@cuerpo);
 
             email.Body = builder.ToMessageBody();
-
             smtp.Send(email);
             smtp.Disconnect(true);
         }

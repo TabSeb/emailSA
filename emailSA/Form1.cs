@@ -68,12 +68,20 @@ namespace emailSA
             socio.nombre = insertarNombre.Text;
             socio.apellido = insertarApellido.Text;
             socio.esMayorDeEdad = esMayorOp.GetSelected(0);
+
             
             socio.pagoDescuento = (socio.FormasPagoDescuento)Enum.Parse(typeof(socio.FormasPagoDescuento), metodoPagoOp.Text);
-            socio.costeEntrada = ((float)socio.pagoDescuento / 100f) * 2000f;
-            //tarjeta de credito anda mal
+            if(socio.pagoDescuento == socio.FormasPagoDescuento.TarjetaCredito)
+            {
+                socio.costeEntrada = 2000f;
+            }
+            else
+            {
+                socio.costeEntrada = ((float)socio.pagoDescuento / 100f) * 2000f;
+
+            }
             socio.datoSocio = $"{socio.nombre}{socio.apellido} - {socio.esMayorDeEdad} - {socio.pagoDescuento} - ${socio.costeEntrada} " ;
-            //str.replace
+            socio.datoSocio.Replace(true)
             sistema.DatoSocios.Add(socio.datoSocio);
             exitoCompra.Show();
         }
@@ -119,8 +127,6 @@ namespace emailSA
                 //TODO: en el caso que salga mal
                 
             }
-            //INSERTA TU METODO FEO 
-            //si sale bien mostra esto
         }
     }
 }
