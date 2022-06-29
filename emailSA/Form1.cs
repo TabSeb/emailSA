@@ -18,6 +18,7 @@ namespace emailSA
             errorIngresar.Hide();
             pantalla2.Hide();
             pantalla3.Hide();
+            errorCorreo.Hide();
             
         }
         private void ingresarBoton_Click(object sender, EventArgs e)
@@ -80,8 +81,10 @@ namespace emailSA
                 socio.costeEntrada = ((float)socio.pagoDescuento / 100f) * 2000f;
 
             }
-            socio.datoSocio = $"{socio.nombre}{socio.apellido} - {socio.esMayorDeEdad} - {socio.pagoDescuento} - ${socio.costeEntrada} " ;
-            socio.datoSocio.Replace(true)
+            
+            socio.datoSocio = $"{socio.nombre} {socio.apellido} - {socio.esMayorDeEdad} - {socio.pagoDescuento} - ${socio.costeEntrada} " ;
+            socio.datoSocio = socio.datoSocio.Replace("True", "si");
+            socio.datoSocio = socio.datoSocio.Replace("False", "no");
             sistema.DatoSocios.Add(socio.datoSocio);
             exitoCompra.Show();
         }
@@ -89,28 +92,10 @@ namespace emailSA
         {
             pantalla2.Hide();
         }
-        private void enviarCorreo_Click(object sender, EventArgs e)
-        {   
-        }
 
         private void finalizarCorreo_Click(object sender, EventArgs e)
         {
             pantalla3.Hide();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void insertarContraseña_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pantalla3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void enviarCorreo_Click_1(object sender, EventArgs e)
@@ -124,7 +109,7 @@ namespace emailSA
             }
             catch (Exception)
             {
-                //TODO: en el caso que salga mal
+                errorCorreo.Show();
                 
             }
         }

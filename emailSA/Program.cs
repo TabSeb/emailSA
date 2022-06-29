@@ -56,12 +56,12 @@ namespace emailSA
             }
 
         }
-        public static void enviar()//TODO incrementar compras exitosas
+        public static void enviar()
         {
 
             
             MimeMessage email = new MimeMessage();
-            email.From.Add(new MailboxAddress(socio.nombre, sistema.emailEmisor));
+            email.From.Add(new MailboxAddress(sistema.nombreEmisor , sistema.emailEmisor));
             email.To.Add(new MailboxAddress("destino", sistema.emailDestino));
             email.Subject = "entradas vendidas";
 
@@ -69,6 +69,8 @@ namespace emailSA
             {
                 cuerpo = $"{cuerpo}<p> {c} <br>";
             }
+
+            
             
             BodyBuilder builder = new BodyBuilder();
             builder.HtmlBody = string.Format(@cuerpo);
@@ -88,7 +90,6 @@ namespace emailSA
         static public float costeEntrada;
         static public string datoSocio;
 
-        
         public enum FormasPagoDescuento
         {
             Efectivo = 50,
